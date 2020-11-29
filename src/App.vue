@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<router-view />
+	<Popup v-if="player.name"
+		>Choisissez un nom
+		<Bouton
+			@click="
+				() => {
+					player.name = 'coucou';
+				}
+			"
+		></Bouton>
+	</Popup>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import player from "@/player";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	import Popup from "@/components/Popup.vue";
+	import Bouton from "@/components/Bouton.vue";
+
+	export default {
+		name: "App",
+		components: {Popup, Bouton},
+		data() {
+			return {
+				player,
+			};
+		},
+	};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	#app {
+		font-family: "Poppins", sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+		margin-top: 60px;
+	}
 </style>
